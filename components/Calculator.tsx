@@ -9,8 +9,8 @@ const Calculator = () => {
 
   const calculate = () => {
     try {
-      // Use new Function instead of eval
-      const result = new Function('return ' + value)();
+      // Safer approach to evaluate the mathematical expression
+      const result = Function('"use strict";return (' + value + ')')();
       setValue(result.toString());
     } catch {
       setValue('Error');
