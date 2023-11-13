@@ -9,7 +9,9 @@ const Calculator = () => {
 
   const calculate = () => {
     try {
-      setValue(eval(value).toString());
+      // Use new Function instead of eval
+      const result = new Function('return ' + value)();
+      setValue(result.toString());
     } catch {
       setValue('Error');
     }
