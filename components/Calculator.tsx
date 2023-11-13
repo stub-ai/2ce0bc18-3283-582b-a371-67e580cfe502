@@ -4,7 +4,9 @@ const Calculator = () => {
   const [value, setValue] = useState('');
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setValue((prevValue) => prevValue + e.currentTarget.value);
+    if (e.currentTarget instanceof HTMLButtonElement) {
+      setValue((prevValue) => prevValue + e.currentTarget.value);
+    }
   };
 
   const calculate = () => {
